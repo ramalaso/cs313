@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.container {
+    width: 30vw;
+    height: 100vh;
+    padding: 15px;
+    margin:30px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+div, button {
+    width: 30%;
+    margin: 10px;
+}
+div:hover {
+    font-weight: bold;
+}
+
+button {
+    margin: 10px;
+    background-color: #fff;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 15px;
+}
