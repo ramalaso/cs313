@@ -59,7 +59,7 @@
         <div class="container footer-container py-2">
             <div>
                 <p>
-                    Raul M. Laredo Soria <a href="http://www.byui.edu">www.byui.edu</a> Copyright &copy, All Rigths
+                    Raul M. Laredo Soria <a href="http://www.byui.edu">www.byui.edu</a> Copyright &copy; All Rigths
                     Reserved <?php echo date("Y-m-d") . "<br>"; ?>
                 </p>
             </div>
