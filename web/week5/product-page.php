@@ -67,7 +67,7 @@ table tr th {
     <nav class="navbar navbar-inverse bg-inverse fixed-top bg-faded">
         <div class="row">
             <div class="col navbar-shopping" style="width: 700px">
-                <a href="../index.php" class="btn btn-info btn-header"><i style="color:white; align: right"
+                <a href="./index.php" class="btn btn-info btn-header"><i style="color:white; align: right"
                         class="fas fa-home pl-0"> Home</i></a>
             </div>
         </div>
