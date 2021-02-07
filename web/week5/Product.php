@@ -31,6 +31,9 @@ class Product
     //     )
     // );
 
+    // public function getAllProduct() {
+    //     return $this->productArray;
+    // }
 
     public function getAllProduct()
     {
