@@ -97,7 +97,11 @@ table tr th {
                             <th>Actions</th>
                         </tr>
                     </thead>
-                    <tbody></tbody>
+                    <tbody>
+                        <?php 
+                             require_once "product-crud.php";
+                        ?>
+                    </tbody>
                 </table>
             </div>
         </div>
