@@ -87,22 +87,11 @@ table tr th {
                         </div>
                     </div>
                 </div>
-                <table class="table table-striped table-hover" id="table">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Product Name</th>
-                            <th>Quantity</th>
-                            <th>Price</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php 
-                             require_once "product-crud.php";
+
+                <?php 
+                             require_once "./product-crud.php";
                         ?>
-                    </tbody>
-                </table>
+
             </div>
         </div>
     </div>
@@ -242,7 +231,6 @@ table tr th {
     </div>
 
     <script src="js/query.js"></script>
-    <script src="js/script.js"></script>
 </body>
 
 </html>
