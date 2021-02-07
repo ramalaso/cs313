@@ -1,6 +1,6 @@
 <?php
 
-require_once './connections.php';
+require_once '../connections.php';
 
 class Product
 {
@@ -30,6 +30,7 @@ class Product
             'quantity' => 45
         )
     );
+
 
     public function getAllProduct()
     {
