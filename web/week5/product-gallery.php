@@ -9,10 +9,10 @@ $productArray = $product->getAllProduct();
             <?php
 if (! empty($productArray)) {
     foreach ($productArray as $key => $value) {
-        $name = $value['name'];
+        $name = $value['product_name'];
         $price = $value['price'];
-        $image = $value['image'];
-        $code = $value['code'];
+        $image = $value['image_product'];
+        $code = $value['sku'];
         ?>
             <div class="col">
                 <div class="card" style="width: 20rem;">
@@ -24,8 +24,7 @@ if (! empty($productArray)) {
                             <div class="product-info">
                                 <button type="button" id="<?php echo $key; ?>"
                                     class=" btnAddAction cart-action btn btn-primary"
-                                    onClick="cartAction('add','<?php echo $code; ?>')"
-                                    >
+                                    onClick="cartAction('add','<?php echo $code; ?>')">
                                     Add to cart
                                 </button>
                             </div>
