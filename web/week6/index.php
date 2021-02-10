@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <form method="post">
+    <form method="post" action="insert_scripture.php">
         <label for="book">Book: </label><br />
         <input type="text" name="book" id="book" placeholder="Book"><br />
         <label for="chapter">Chapter: </label><br />
