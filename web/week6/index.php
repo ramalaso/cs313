@@ -1,26 +1,5 @@
 <?php
-require('../week5/connections.php');
-
-function get_topics(){
-    $db = connect();
-
-    $stmt = $db->query('select * from topics');
-    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    return $result;
-}
-
-function displayTopicsAsCheckboxes(){
-    $array = get_topics();
-    foreach($array as $row){  ?>
-<input type="checkbox" name="topics[]" id="topic_<? echo $row['id'] ?>" value="<? echo $row['id'] ?>">
-<label for="topic_<? echo $row['id'] ?>">
-    <? echo $row['name'] ?>
-</label><br />
-<?}
-}
-
-
+require('./db.php');
 ?>
 <!doctype html>
 <html lang="en">
