@@ -1,5 +1,6 @@
 <?php
-require('./db.php');
+require('db.php');
+echo "we are in db"
 ?>
 <!doctype html>
 <html lang="en">

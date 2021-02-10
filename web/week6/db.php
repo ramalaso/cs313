@@ -1,7 +1,7 @@
 <?
 
 // export DATABASE_URL='postgres://postgres@localhost:5432/postgres'
-
+echo "db file is here...";
 function dbConnect(){
   $db = null;
   try
