@@ -32,7 +32,7 @@ function dbConnect(){
 function get_topics(){
     $db = dbConnect();
 
-    $stmt = $db->query('select * from topic');
+    $stmt = $db->query('select * from topics');
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     return $result;
