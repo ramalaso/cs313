@@ -1,7 +1,9 @@
 <?php
+
 require('db.php');
-echo "we are in db"
+echo "we are in db";
 ?>
+
 <!doctype html>
 <html lang="en">
 
@@ -47,7 +49,7 @@ form {
             <textarea type="text" class="form-control" name="content" id="exampleInputPassword1"
                 placeholder="Verse"> </textarea>
         </div>
-        <?php displayTopicsAsCheckboxes(); ?>
+        <?php //displayTopicsAsCheckboxes(); ?>
         <div class="form-check">
             <input type="checkbox" class="form-check-input" id="exampleCheck1">
             <label class="form-check-label" for="exampleCheck1">Check me out</label>
