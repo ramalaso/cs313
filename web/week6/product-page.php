@@ -108,16 +108,24 @@ table tr th {
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
+                            <label>Code</label>
+                            <input type="text" class="form-control" id="image" name="code" required />
+                        </div>
+                        <div class="form-group">
+                            <label>Image</label>
+                            <input type="text" class="form-control" id="image" name="image" required />
+                        </div>
+                        <div class="form-group">
                             <label>Name</label>
-                            <input type="text" class="form-control" id="addName" required />
+                            <input type="text" class="form-control" id="addName" name="name" required />
                         </div>
                         <div class="form-group">
                             <label>Quantity</label>
-                            <input type="number" class="form-control" id="addQuantity" required />
+                            <input type="number" class="form-control" name="quantity" id="addQuantity" required />
                         </div>
                         <div class="form-group">
                             <label>Price</label>
-                            <input type="number" class="form-control" id="addPrice" required />
+                            <input type="number" class="form-control" id="addPrice" name="price" required />
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -125,6 +133,7 @@ table tr th {
                             data-dismiss="modal" id="cancelAdd" />
                         <input type="submit" class="btn btn-success" value="Add" id="submitAdd" />
                     </div>
+                    <input type="hidden" name="action" value="add-product">
                 </form>
             </div>
         </div>
