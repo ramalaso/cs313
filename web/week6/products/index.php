@@ -28,20 +28,7 @@ require_once '../models/product-model.php';
         // Send the data to the model
         $productOutcome =  regProduct($sku, $product_name, $price, $product_description, $image_product, $category_id, $created_at, $quantity);
 
-        if($productOutcome === 1){
-          $message = "<div class='alert alert-success' role='alert'>
-                        Product added...
-                      </div>";
-          include '../product-page.php';
-          exit;
-        } else {
-          $message = "<div class='alert alert-primary' role='alert'>
-                        Error: Product not added.
-                      </div>";
-          include '../product-page.php';
-          exit;
-        }
-        break;
-      default:
-        echo "Page not found";
+        header('Location: ../index.php');
+
+        
  }
