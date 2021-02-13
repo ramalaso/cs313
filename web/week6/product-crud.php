@@ -7,6 +7,7 @@ $productArray = $product->getAllProduct();
     <thead>
         <tr>
             <th>Id</th>
+            <th>Image</th>
             <th>Product Name</th>
             <th>Quantity</th>
             <th>Price</th>
@@ -25,6 +26,7 @@ if (! empty($productArray)) {
         ?>
         <tr>
             <td><?php echo $code; ?></td>
+            <td><img src="<?php echo $image; ?>" width="100" height="100"></td>
             <td><?php echo $name; ?></td>
             <td><?php echo $quantity; ?></td>
             <td><?php echo $price; ?></td>
