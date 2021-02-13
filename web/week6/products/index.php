@@ -43,4 +43,7 @@ require_once '../model/product-model.php';
           include '../product-page.php';
           exit;
         }
+        break;
+      default:
+        echo "Page not found"
  }
