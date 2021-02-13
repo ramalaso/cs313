@@ -3,9 +3,6 @@
  * Vehicles  Controller
  *********************************************/
 
-// Create or access a Session
-session_start();
-
 // Get the database connection file
 require_once '../connections.php';
 // Get the accounts model
@@ -26,6 +23,7 @@ require_once '../models/product-model.php';
         $price = filter_input(INPUT_POST, 'price', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
         $product_description = "Fruit";
         $category_id = 1;
+        $created_at = '02/13/2021';
 
         // Send the data to the model
         $productOutcome =  regProduct($sku, $product_name, $price, $product_description, $image_product, $category_id, $created_at, $quantity);
