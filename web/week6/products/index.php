@@ -45,5 +45,5 @@ require_once '../models/product-model.php';
         }
         break;
       default:
-        echo "Page not found"
+        echo "Page not found";
  }
