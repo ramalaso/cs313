@@ -1,3 +1,43 @@
+<?php 
+session_start();
+//now in a normal php application of logging in or handling of login requests, i don't suggest doing this, but this is quick and easy(ish)
+$action = (isset($_GET['action'])) ? $_GET['action']: ""; //Ternary operator asking if there is an inputted action
+require_once ("Product.php");
+$product = new Product();
+$products = $product->getAllProduct();
+switch($action)
+{
+    case "edit":
+        //this is a quick and dirty way to make a cart! plz if you're ever going to make a cart... don't do this!
+        $itemid = (isset($_GET['id'])) ? $_GET['itemid']: "";
+        if($itemid != "")
+        {
+            require_once ("./models/product-model.php");
+            $product = getProduct($itemid);
+        }
+        break;
+    case "deleteitem":
+        //this is a quick and dirty way to make a cart! plz if you're ever going to make a cart... don't do this!
+        echo "We are deleting an item";
+        $itemid = (isset($_GET['itemid'])) ? $_GET['itemid']: "";
+        if($itemid != "")
+        {
+            if($_SESSION['cart'] == "")
+            {
+                unset($_SESSION['cart'][$itemid]);
+            } else {
+                unset($_SESSION['cart'][$itemid]);
+            }
+        }
+        break;
+    case "clearcart":
+        $_SESSION['cart'] = "";
+        break;
+    case "new":
+        $_SESSION['cart'] = "";
+        break;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -156,7 +196,8 @@ table tr th {
                         </div>
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="text" class="form-control" id="updateName" required />
+                            <input type="text" class="form-control" id="updateName" required
+                                value="<?php echo $product['name']; ?>" />
                         </div>
                         <div class="form-group">
                             <label>Quantity</label>
@@ -270,7 +311,7 @@ table tr th {
         });
         $('.update').click(function() {
             var itemid = $(this).attr("update_id");
-            var location = "index.php?action=update&itemid=" + itemid;
+            var location = "product-page.php?action=update&itemid=" + itemid;
             window.location.href = location;
         });
         $('.disp_item').mouseover(function() {
