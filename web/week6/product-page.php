@@ -200,7 +200,7 @@ table tr th {
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Id</label>
-                            <input type="text" class="form-control" id="updateId" required />
+                            <input type="text" class="form-control" id="updateId" />
                         </div>
                         <div class="form-group">
                             <label>Name</label>
