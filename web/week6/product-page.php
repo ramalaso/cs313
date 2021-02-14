@@ -275,7 +275,6 @@ table tr th {
         </div>
     </div>
 
-    <script src="js/query.js"></script>
     <script type="text/javascript" language="javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"> </script>
     <script type="text/javascript" language="javascript">
     $(function() {
