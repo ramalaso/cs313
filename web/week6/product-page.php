@@ -190,7 +190,7 @@ table tr th {
     <div id="editProductModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form>
+                <form method="post" action="update.php">
                     <div class="modal-header">
                         <h4 class="modal-title">Edit Product</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
