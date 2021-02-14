@@ -184,7 +184,7 @@ table tr th {
         </div>
     </div>
     <!-- Edit Modal HTML -->
-    <div id="editProductModal" class="modal fade">
+    <div id="editProductModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <form method="post" action="update.php">

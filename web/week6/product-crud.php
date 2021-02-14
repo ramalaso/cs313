@@ -31,10 +31,10 @@ if (! empty($productArray)) {
             <td><?php echo $quantity; ?></td>
             <td><?php echo $price; ?></td>
             <td>
-                <a data-target="#editProductModal" class="edit" edit_id="<?php echo $sku; ?>" data-toggle="modal"><i
+                <a href="#editProductModal" class="edit" edit_id="<?php echo $sku; ?>" data-toggle="modal"><i
                         class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                <a data-target="#deleteProductModal" class="delete" delete_id="<?php echo $sku; ?>"
-                    data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                <a href="#deleteProductModal" class="delete" delete_id="<?php echo $sku; ?>" data-toggle="modal"><i
+                        class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
             </td>
         </tr>
         <?php
