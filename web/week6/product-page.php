@@ -178,10 +178,10 @@ table tr th {
         </div>
     </div>
     <!-- Edit Modal HTML -->
-    <div id="editProductModal" class="modal fade" role="dialog">
+    <div id="editProductModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form action="products/index.php" method="POST">
+                <form>
                     <div class="modal-header">
                         <h4 class="modal-title">Edit Product</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
@@ -190,29 +190,20 @@ table tr th {
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>Code</label>
-                            <input type="text" class="form-control" id="image" name="code"
-                                value="<?php echo $_SESSION['product']['sku']; ?>" required />
-                        </div>
-                        <div class="form-group">
-                            <label>Image</label>
-                            <input type="text" class="form-control" id="image" name="image"
-                                value="<?php echo $_SESSION['product']['image_product']; ?>" required />
+                            <label>Id</label>
+                            <input type="text" class="form-control" id="updateId" required />
                         </div>
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="text" class="form-control" id="addName" name="name"
-                                value="<?php echo $_SESSION['product']['product_name']; ?>" required />
+                            <input type="text" class="form-control" id="updateName" required />
                         </div>
                         <div class="form-group">
                             <label>Quantity</label>
-                            <input type="number" class="form-control" name="quantity"
-                                value="<?php echo $_SESSION['product']['quantity']; ?>" id="addQuantity" required />
+                            <input type="number" class="form-control" id="updateQuantity" required />
                         </div>
                         <div class="form-group">
                             <label>Price</label>
-                            <input type="number" class="form-control" id="addPrice" name="price"
-                                value="<?php echo $_SESSION['product']['price']; ?>" required />
+                            <input type="number" class="form-control" id="updatePrice" required />
                         </div>
                     </div>
                     <div class="modal-footer">
