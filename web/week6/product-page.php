@@ -9,8 +9,13 @@ switch($action)
         if($itemid != "")
         {
             echo "We are in itemid";
-            require_once '../models/product-model.php';
-            $product = getProduct($itemid);
+            $sql = 'SELECT * FROM products WHERE sku = :sku';
+            $stmt = $db->prepare($sql);
+            $stmt->bindValue(':sku', $itemid, PDO::PARAM_STR);
+            $stmt->execute();
+            $invInfo = $stmt->fetch(PDO::FETCH_ASSOC);
+            $stmt->closeCursor();
+            $product = $invInfo;
             print_r($product);
         }
         break;
