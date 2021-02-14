@@ -4,9 +4,9 @@ if($_SESSION['cart'] != '') {
 foreach($_SESSION['cart'] as $key => $value)
     {
     $cart_total = $cart_total + $value['price'];
-    $name = $value['name'];
+    $name = $value['product_name'];
     $price = $value['price'];
-    $image = $value['image'];
+    $image = $value['image_product'];
     $price = $value['price'];
     echo <<<DISP
     <tr>
