@@ -26,7 +26,6 @@ switch($action)
         break;
     case "delete":
         //this is a quick and dirty way to make a cart! plz if you're ever going to make a cart... don't do this!
-        echo "We are deleting an item";
         $itemid = (isset($_GET['itemid'])) ? $_GET['itemid']: "";
         if($itemid != "")
         {
