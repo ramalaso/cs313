@@ -35,12 +35,6 @@ switch($action)
             $stmt->closeCursor();
         }
         break;
-    case "clearcart":
-        $_SESSION['cart'] = "";
-        break;
-    case "new":
-        $_SESSION['cart'] = "";
-        break;
 }
 ?>
 <!DOCTYPE html>
@@ -197,23 +191,28 @@ table tr th {
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Code</label>
-                            <input type="text" class="form-control" id="image" name="code" required />
+                            <input type="text" class="form-control" id="image" name="code"
+                                value="<?php echo $_SESSION['product']['sku']; ?>" required />
                         </div>
                         <div class="form-group">
                             <label>Image</label>
-                            <input type="text" class="form-control" id="image" name="image" required />
+                            <input type="text" class="form-control" id="image" name="image"
+                                value="<?php echo $_SESSION['product']['image_product']; ?>" required />
                         </div>
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="text" class="form-control" id="addName" name="name" required />
+                            <input type="text" class="form-control" id="addName" name="name"
+                                value="<?php echo $_SESSION['product']['product_name']; ?>" required />
                         </div>
                         <div class="form-group">
                             <label>Quantity</label>
-                            <input type="number" class="form-control" name="quantity" id="addQuantity" required />
+                            <input type="number" class="form-control" name="quantity"
+                                value="<?php echo $_SESSION['product']['quantity']; ?>" id="addQuantity" required />
                         </div>
                         <div class="form-group">
                             <label>Price</label>
-                            <input type="number" class="form-control" id="addPrice" name="price" required />
+                            <input type="number" class="form-control" id="addPrice" name="price"
+                                value="<?php echo $_SESSION['product']['price']; ?>" required />
                         </div>
                     </div>
                     <div class="modal-footer">
