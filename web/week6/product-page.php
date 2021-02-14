@@ -18,9 +18,7 @@ switch($action)
             $invInfo = $stmt->fetch(PDO::FETCH_ASSOC);
             $stmt->closeCursor();
             $product = $invInfo;
-            print_r($product);
             $_SESSION['product'] = $product;
-            print_r($_SESSION['product']['product_name']);
         }
         break;
     case "delete":
