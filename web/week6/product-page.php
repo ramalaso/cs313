@@ -24,18 +24,17 @@ switch($action)
             print_r($_SESSION['product']['product_name']);
         }
         break;
-    case "deleteitem":
+    case "delete":
         //this is a quick and dirty way to make a cart! plz if you're ever going to make a cart... don't do this!
         echo "We are deleting an item";
         $itemid = (isset($_GET['itemid'])) ? $_GET['itemid']: "";
         if($itemid != "")
         {
-            if($_SESSION['cart'] == "")
-            {
-                unset($_SESSION['cart'][$itemid]);
-            } else {
-                unset($_SESSION['cart'][$itemid]);
-            }
+            $db = connect();
+            $sql = 'DELETE FROM products WHERE sku = :sku';
+            $stmt = $db->prepare($sql);
+            $stmt->bindValue(':sku', $itemid, PDO::PARAM_STR);
+            $stmt->execute();
         }
         break;
     case "clearcart":
