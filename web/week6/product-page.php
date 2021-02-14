@@ -293,7 +293,7 @@ table tr th {
     $(function() {
         $('.delete').click(function() {
             var itemid = $(this).attr("delete_id");
-            var location = "product-page.php?action=edit&itemid=" + itemid;
+            var location = "product-page.php?action=delete&itemid=" + itemid;
             window.location.href = location;
         });
         $('.edit').click(function() {
