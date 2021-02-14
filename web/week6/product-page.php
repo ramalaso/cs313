@@ -18,7 +18,7 @@ switch($action)
             $invInfo = $stmt->fetch(PDO::FETCH_ASSOC);
             $stmt->closeCursor();
             $product = $invInfo;
-            echo($product);
+            print_r($product);
         }
         break;
     case "deleteitem":
