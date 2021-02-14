@@ -25,7 +25,7 @@ if (! empty($productArray)) {
         $quantity = $value['quantity'];
         ?>
         <tr>
-            <td><?php echo $code; ?></td>
+            <td><?php echo $sku; ?></td>
             <td><img src="<?php echo $image; ?>" width="30" height="30"></td>
             <td><?php echo $name; ?></td>
             <td><?php echo $quantity; ?></td>
@@ -35,10 +35,6 @@ if (! empty($productArray)) {
                         class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                 <a href="#deleteProductModal" class="delete" delete_id="<?php echo $sku; ?>" data-toggle="modal"><i
                         class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                <a href="#addInventoryModal" class="inventory" data-toggle="modal"><i class="material-icons"
-                        data-toggle="tooltip" title="Add Inventory"
-                        onclick="addInventory(<?php echo $sku; ?>)">&#xE147;</i>
-                </a>
             </td>
         </tr>
         <?php
