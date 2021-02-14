@@ -10,6 +10,7 @@ switch($action)
         {
             require_once ("./models/product-model.php");
             $product = getProduct($itemid);
+            print_r($product);
         }
         break;
     case "deleteitem":
