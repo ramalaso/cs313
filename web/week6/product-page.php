@@ -196,8 +196,8 @@ table tr th {
                         </div>
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="text" class="form-control" id="updateName" required
-                                value="<?php echo $product['name']; ?>" />
+                            <input type="text" class="form-control" id="updateName"
+                                value="<?php echo $product['name']; ?>" required />
                         </div>
                         <div class="form-group">
                             <label>Quantity</label>
@@ -306,7 +306,7 @@ table tr th {
         });
         $('.edit').click(function() {
             var itemid = $(this).attr("edit_id");
-            var location = "products/index.php?action=edit&itemid=" + itemid;
+            var location = "product-page.php?action=edit&itemid=" + itemid;
             window.location.href = location;
         });
         $('.update').click(function() {
