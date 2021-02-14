@@ -187,7 +187,7 @@ table tr th {
     <div id="editProductModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form method="post" action="update.php">
+                <form action="products/index.php" method="POST">
                     <div class="modal-header">
                         <h4 class="modal-title">Edit Product</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
@@ -196,20 +196,24 @@ table tr th {
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>Id</label>
-                            <input type="text" class="form-control" id="updateId" />
+                            <label>Code</label>
+                            <input type="text" class="form-control" id="image" name="code" required />
+                        </div>
+                        <div class="form-group">
+                            <label>Image</label>
+                            <input type="text" class="form-control" id="image" name="image" required />
                         </div>
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="text" class="form-control" id="updateName" />
+                            <input type="text" class="form-control" id="addName" name="name" required />
                         </div>
                         <div class="form-group">
                             <label>Quantity</label>
-                            <input type="number" class="form-control" id="updateQuantity" />
+                            <input type="number" class="form-control" name="quantity" id="addQuantity" required />
                         </div>
                         <div class="form-group">
                             <label>Price</label>
-                            <input type="number" class="form-control" id="updatePrice" />
+                            <input type="number" class="form-control" id="addPrice" name="price" required />
                         </div>
                     </div>
                     <div class="modal-footer">
