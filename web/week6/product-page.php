@@ -204,8 +204,7 @@ table tr th {
                         </div>
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="text" class="form-control" id="updateName"
-                                value="<?php echo $_SESSION['product']['product_name']; ?>" />
+                            <input type="text" class="form-control" id="updateName" />
                         </div>
                         <div class="form-group">
                             <label>Quantity</label>
