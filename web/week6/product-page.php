@@ -8,7 +8,8 @@ switch($action)
         $itemid = (isset($_GET['itemid'])) ? $_GET['itemid']: "";
         if($itemid != "")
         {
-            require_once ("./models/product-model.php");
+            echo "We are in itemid";
+            require_once '../models/product-model.php';
             $product = getProduct($itemid);
             print_r($product);
         }
