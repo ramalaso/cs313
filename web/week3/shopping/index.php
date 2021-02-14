@@ -57,7 +57,9 @@ switch($action)
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
         integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous">
     </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+        integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+        crossorigin="anonymous" />
     <link rel="stylesheet" href="style.css">
     <title>Shopping cart</title>
 </head>
@@ -73,30 +75,34 @@ switch($action)
     ?>
 
     <script type="text/javascript" language="javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"> </script>
-        <script type="text/javascript" language="javascript">
-            $(function() {
-                $('.button').mouseover(function() {
-                    $(this).animate({opacity:1},200);
-                })
-                .mouseleave(function() {
-                    $(this).animate({opacity:.6},200);
-                });
-                $('.cart-action').click(function() {
-                    var itemid = $(this).attr("id");
-                    var location = "index.php?action=additem&itemid="+itemid;
-                    window.location.href = location;
-                });
-                $('.disp_item').mouseover(function() {
-                    $(this).css("background-color","#CCC");
-                })
-                .mouseleave(function() {
-                    $(this).css("background-color","transparent");
-                });
-                $('#clearcart').click(function() {
-                    window.location.href= "index.php?action=clearcart";
-                });
+    <script type="text/javascript" language="javascript">
+    $(function() {
+        $('.button').mouseover(function() {
+                $(this).animate({
+                    opacity: 1
+                }, 200);
+            })
+            .mouseleave(function() {
+                $(this).animate({
+                    opacity: .6
+                }, 200);
             });
-        </script>
+        $('.cart-action').click(function() {
+            var itemid = $(this).attr("id");
+            var location = "index.php?action=additem&itemid=" + itemid;
+            window.location.href = location;
+        });
+        $('.disp_item').mouseover(function() {
+                $(this).css("background-color", "#CCC");
+            })
+            .mouseleave(function() {
+                $(this).css("background-color", "transparent");
+            });
+        $('#clearcart').click(function() {
+            window.location.href = "index.php?action=clearcart";
+        });
+    });
+    </script>
 
 </body>
 

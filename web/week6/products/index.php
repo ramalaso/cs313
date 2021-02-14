@@ -16,7 +16,7 @@ require_once '../models/product-model.php';
  switch ($action) {
      case 'add-product':
          // Filter and store the data
-        $sku = filter_input(INPUT_POST, 'code', FILTER_SANITIZE_STRING);
+        $sku = filter_input(INPUT_POST, 'sku', FILTER_SANITIZE_STRING);
         $image_product = filter_input(INPUT_POST, 'image', FILTER_SANITIZE_STRING);
         $product_name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
         $quantity = filter_input(INPUT_POST, 'quantity', FILTER_SANITIZE_NUMBER_INT);
@@ -29,6 +29,10 @@ require_once '../models/product-model.php';
         $productOutcome =  regProduct($sku, $product_name, $price, $product_description, $image_product, $category_id, $created_at, $quantity);
 
         header('Location: ../index.php');
-
+        break;
+      case "delete":
+        break;
+      case "edit":
         
+        break;
  }

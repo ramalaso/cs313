@@ -89,8 +89,8 @@ table tr th {
                 </div>
 
                 <?php 
-                             require_once "./product-crud.php";
-                        ?>
+                    require_once "./product-crud.php";
+                ?>
 
             </div>
         </div>
@@ -240,6 +240,50 @@ table tr th {
     </div>
 
     <script src="js/query.js"></script>
+    <script type="text/javascript" language="javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"> </script>
+    <script type="text/javascript" language="javascript">
+    $(function() {
+        $('.button').mouseover(function() {
+                $(this).animate({
+                    opacity: 1
+                }, 200);
+            })
+            .mouseleave(function() {
+                $(this).animate({
+                    opacity: .6
+                }, 200);
+            });
+        $('.cart-action').click(function() {
+            var itemid = $(this).attr("id");
+            var location = "index.php?action=additem&itemid=" + itemid;
+            window.location.href = location;
+        });
+        $('.delete').click(function() {
+            var itemid = $(this).attr("delete_id");
+            var location = "index.php?action=delete&itemid=" + itemid;
+            window.location.href = location;
+        });
+        $('.edit').click(function() {
+            var itemid = $(this).attr("edit_id");
+            var location = "products/index.php?action=edit&itemid=" + itemid;
+            window.location.href = location;
+        });
+        $('.update').click(function() {
+            var itemid = $(this).attr("update_id");
+            var location = "index.php?action=update&itemid=" + itemid;
+            window.location.href = location;
+        });
+        $('.disp_item').mouseover(function() {
+                $(this).css("background-color", "#CCC");
+            })
+            .mouseleave(function() {
+                $(this).css("background-color", "transparent");
+            });
+        $('#clearcart').click(function() {
+            window.location.href = "index.php?action=clearcart";
+        });
+    });
+    </script>
 </body>
 
 </html>
