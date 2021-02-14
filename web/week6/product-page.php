@@ -191,7 +191,8 @@ table tr th {
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Id</label>
-                            <input type="text" class="form-control" id="updateId" required />
+                            <input type="text" class="form-control" id="updateId" value="$_SESSION['product']['sku']"
+                                required />
                         </div>
                         <div class="form-group">
                             <label>Name</label>
