@@ -4,6 +4,7 @@ switch($action)
 {
     case "edit":
         //this is a quick and dirty way to make a cart! plz if you're ever going to make a cart... don't do this!
+        echo "We are in edit";
         $itemid = (isset($_GET['id'])) ? $_GET['itemid']: "";
         if($itemid != "")
         {
@@ -285,7 +286,7 @@ table tr th {
         });
         $('.edit').click(function() {
             var itemid = $(this).attr("edit_id");
-            var location = "product-page.php?action=update&itemid=" + itemid;
+            var location = "product-page.php?action=edit&itemid=" + itemid;
             window.location.href = location;
         });
         $('.update').click(function() {
