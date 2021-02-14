@@ -1,5 +1,6 @@
 <?php 
 $action = (isset($_GET['action'])) ? $_GET['action']: ""; //Ternary operator asking if there 
+require_once './connections.php';
 switch($action)
 {
     case "edit":
