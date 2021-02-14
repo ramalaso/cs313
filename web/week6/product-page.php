@@ -6,11 +6,10 @@ switch($action)
 {
     case "edit":
         //this is a quick and dirty way to make a cart! plz if you're ever going to make a cart... don't do this!
-        echo "We are in edit";
+        
         $itemid = (isset($_GET['itemid'])) ? $_GET['itemid']: "";
         if($itemid != "")
         {
-            echo "We are in itemid";
             $db = connect();
             $sql = 'SELECT * FROM products WHERE sku = :sku';
             $stmt = $db->prepare($sql);
