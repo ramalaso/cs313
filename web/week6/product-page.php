@@ -35,6 +35,8 @@ switch($action)
             $stmt = $db->prepare($sql);
             $stmt->bindValue(':sku', $itemid, PDO::PARAM_STR);
             $stmt->execute();
+            $rowsChanged = $stmt->rowCount();
+            $stmt->closeCursor();
         }
         break;
     case "clearcart":
