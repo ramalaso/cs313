@@ -21,6 +21,7 @@ switch($action)
             $product = $invInfo;
             print_r($product);
             $_SESSION['product'] = $product;
+            print_r($_SESSION['product']);
         }
         break;
     case "deleteitem":
