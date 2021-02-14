@@ -178,7 +178,7 @@ table tr th {
         </div>
     </div>
     <!-- Edit Modal HTML -->
-    <div id="editProductModal" class="modal fade">
+    <div id="editProductModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <form>
@@ -190,21 +190,29 @@ table tr th {
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>Id</label>
-                            <input type="text" class="form-control" id="updateId" value="$_SESSION['product']['sku']"
-                                required />
+                            <label>Code</label>
+                            <input type="text" class="form-control" id="image" name="code"
+                                value="<?php echo $_SESSION['product']['sku']; ?>" required />
+                        </div>
+                        <div class="form-group">
+                            <label>Image</label>
+                            <input type="text" class="form-control" id="image" name="image"
+                                value="<?php echo $_SESSION['product']['image_product']; ?>" required />
                         </div>
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="text" class="form-control" id="updateName" required />
+                            <input type="text" class="form-control" id="addName" name="name"
+                                value="<?php echo $_SESSION['product']['product_name']; ?>" required />
                         </div>
                         <div class="form-group">
                             <label>Quantity</label>
-                            <input type="number" class="form-control" id="updateQuantity" required />
+                            <input type="number" class="form-control" name="quantity"
+                                value="<?php echo $_SESSION['product']['quantity']; ?>" id="addQuantity" required />
                         </div>
                         <div class="form-group">
                             <label>Price</label>
-                            <input type="number" class="form-control" id="updatePrice" required />
+                            <input type="number" class="form-control" id="addPrice" name="price"
+                                value="<?php echo $_SESSION['product']['price']; ?>" required />
                         </div>
                     </div>
                     <div class="modal-footer">
