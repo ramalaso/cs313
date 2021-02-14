@@ -192,8 +192,7 @@ table tr th {
                         </div>
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="text" class="form-control" id="updateName"
-                                placeholder="<?php echo $product['name']; ?>" required />
+                            <input type="text" class="form-control" id="updateName" required />
                         </div>
                         <div class="form-group">
                             <label>Quantity</label>
