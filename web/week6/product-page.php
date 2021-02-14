@@ -1,10 +1,5 @@
 <?php 
-session_start();
-//now in a normal php application of logging in or handling of login requests, i don't suggest doing this, but this is quick and easy(ish)
-$action = (isset($_GET['action'])) ? $_GET['action']: ""; //Ternary operator asking if there is an inputted action
-require_once ("Product.php");
-$product = new Product();
-$products = $product->getAllProduct();
+$action = (isset($_GET['action'])) ? $_GET['action']: ""; //Ternary operator asking if there 
 switch($action)
 {
     case "edit":
@@ -284,21 +279,6 @@ table tr th {
     <script type="text/javascript" language="javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"> </script>
     <script type="text/javascript" language="javascript">
     $(function() {
-        $('.button').mouseover(function() {
-                $(this).animate({
-                    opacity: 1
-                }, 200);
-            })
-            .mouseleave(function() {
-                $(this).animate({
-                    opacity: .6
-                }, 200);
-            });
-        $('.cart-action').click(function() {
-            var itemid = $(this).attr("id");
-            var location = "index.php?action=additem&itemid=" + itemid;
-            window.location.href = location;
-        });
         $('.delete').click(function() {
             var itemid = $(this).attr("delete_id");
             var location = "index.php?action=delete&itemid=" + itemid;
@@ -313,15 +293,6 @@ table tr th {
             var itemid = $(this).attr("update_id");
             var location = "product-page.php?action=update&itemid=" + itemid;
             window.location.href = location;
-        });
-        $('.disp_item').mouseover(function() {
-                $(this).css("background-color", "#CCC");
-            })
-            .mouseleave(function() {
-                $(this).css("background-color", "transparent");
-            });
-        $('#clearcart').click(function() {
-            window.location.href = "index.php?action=clearcart";
         });
     });
     </script>
