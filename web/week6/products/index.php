@@ -33,6 +33,5 @@ require_once '../models/product-model.php';
       case "delete":
         break;
       case "edit":
-        
         break;
  }
