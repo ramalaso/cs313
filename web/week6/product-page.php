@@ -285,7 +285,7 @@ table tr th {
         });
         $('.edit').click(function() {
             var itemid = $(this).attr("edit_id");
-            var location = "index.php?action=edit&itemid=" + itemid;
+            var location = "product-page.php?action=update&itemid=" + itemid;
             window.location.href = location;
         });
         $('.update').click(function() {
