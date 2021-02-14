@@ -205,15 +205,15 @@ table tr th {
                         <div class="form-group">
                             <label>Name</label>
                             <input type="text" class="form-control" id="updateName"
-                                placeholder="<?php echo $_SESSION['product']['product_name']; ?>" required />
+                                value="<?php echo $_SESSION['product']['product_name']; ?>" />
                         </div>
                         <div class="form-group">
                             <label>Quantity</label>
-                            <input type="number" class="form-control" id="updateQuantity" required />
+                            <input type="number" class="form-control" id="updateQuantity" />
                         </div>
                         <div class="form-group">
                             <label>Price</label>
-                            <input type="number" class="form-control" id="updatePrice" required />
+                            <input type="number" class="form-control" id="updatePrice" />
                         </div>
                     </div>
                     <div class="modal-footer">
