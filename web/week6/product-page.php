@@ -9,6 +9,7 @@ switch($action)
         if($itemid != "")
         {
             echo "We are in itemid";
+            $db = connect();
             $sql = 'SELECT * FROM products WHERE sku = :sku';
             $stmt = $db->prepare($sql);
             $stmt->bindValue(':sku', $itemid, PDO::PARAM_STR);
