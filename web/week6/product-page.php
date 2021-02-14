@@ -5,7 +5,7 @@ switch($action)
     case "edit":
         //this is a quick and dirty way to make a cart! plz if you're ever going to make a cart... don't do this!
         echo "We are in edit";
-        $itemid = (isset($_GET['id'])) ? $_GET['itemid']: "";
+        $itemid = (isset($_GET['itemid'])) ? $_GET['itemid']: "";
         if($itemid != "")
         {
             require_once ("./models/product-model.php");
