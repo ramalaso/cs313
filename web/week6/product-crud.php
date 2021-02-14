@@ -32,8 +32,7 @@ if (! empty($productArray)) {
             <td><?php echo $price; ?></td>
             <td>
                 <a href="#editProductModal" class="edit" edit_id="<?php echo $sku; ?>" data-toggle="modal"><i
-                        class="material-icons" data-toggle="tooltip" title="Edit"
-                        onclick="selectProduct(<?php echo $sku; ?>)">&#xE254;</i></a>
+                        class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                 <a href="#deleteProductModal" class="delete" data-toggle="modal"><i class="material-icons"
                         delete_id="<?php echo $sku; ?>" data-toggle="tooltip" title="Delete"
                         onclick="removeProduct(<?php echo $sku; ?>)">&#xE872;</i></a>
