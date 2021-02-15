@@ -1,44 +1,26 @@
-$(document).ready(function () {
-  // Activate tooltip
-  $('[data-toggle="tooltip"]').tooltip();
+//triggered when modal is about to be shown
+// $('#editProductModal').on('show.bs.modal', function(e) {
 
-  // Select/Deselect checkboxes
-  var checkbox = $('table tbody input[type="checkbox"]');
-  $("#selectAll").click(function () {
-    if (this.checked) {
-      checkbox.each(function () {
-        this.checked = true;
-      });
-    } else {
-      checkbox.each(function () {
-        this.checked = false;
-      });
-    }
-  });
-  checkbox.click(function () {
-    if (!this.checked) {
-      $("#selectAll").prop("checked", false);
-    }
-  });
-});
+//   //get data-id attribute of the clicked element
+//   var bookId = $(e.relatedTarget).data('data-id');
+//   console.log(bookId)
 
-$(function() {
-  $('.delete').click(function(e) {
-      e.preventDefault();
-      var itemid = $(this).attr("delete_id");
-      var location = "product-page.php?action=delete&itemid=" + itemid;
-      window.location.href = location;
-  });
-  $('.edit').click(function(e) {
-      e.preventDefault();
-      var itemid = $(this).attr("edit_id");
-      var location = "product-page.php?action=edit&itemid=" + itemid;
-      window.location.href = location;
-  });
-  $('.update').click(function(e) {
-      e.preventDefault();
-      var itemid = $(this).attr("update_id");
-      var location = "product-page.php?action=update&itemid=" + itemid;
-      window.location.href = location;
-  });
+//   //populate the textbox
+//   $(e.currentTarget).find('input[name="code"]').val(bookId);
+// });
+
+$(document).ready(function() {
+  $('.edit-product').click(function () {
+    var data_id = '';
+    if (typeof $(this).data('id') !== 'undefined') {
+      console.log('WE are in')
+      data_id = $(this).data('id');
+      console.log(data_id)
+    }
+    $('#edit-code').val($(this).data('id'));
+    $('#edit-name').val($(this).data('name'));
+    $('#edit-image').val($(this).data('image'));
+    $('#edit-quantity').val($(this).data('quantity'));
+    $('#edit-price').val($(this).data('price'));
+  })
 });
