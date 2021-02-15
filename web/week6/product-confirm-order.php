@@ -1,7 +1,7 @@
 <?php  
 $cart_total = 0;
-if($_SESSION['cart'] != '') {
-foreach($_SESSION['cart'] as $key => $value)
+if($_SESSION['new_cart'] != '') {
+foreach($_SESSION['new_cart'] as $key => $value)
     {
     $cart_total = $cart_total + $value['price'];
     $name = $value['product_name'];
