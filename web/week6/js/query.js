@@ -23,4 +23,20 @@ $(document).ready(function() {
     $('#edit-quantity').val($(this).data('quantity'));
     $('#edit-price').val($(this).data('price'));
   })
+
+  $('.delete').click(function () {
+    var data_id = '';
+    if (typeof $(this).data('id') !== 'undefined') {
+      data_id = $(this).data('id');
+      console.log(data_id)
+    }
+    $('#idDelete').text($(this).data('id'));
+  })
+
+  $('#deleteAccepted').click(function() {
+    var itemid = $('#idDelete').text();
+    console.log(itemid)
+    var location = "product-page.php?action=delete&itemid=" + itemid;
+    window.location.href = location;
+});
 });

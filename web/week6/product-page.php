@@ -1,3 +1,25 @@
+<?php 
+session_start();
+$action = (isset($_GET['action'])) ? $_GET['action']: ""; //Ternary operator asking if there 
+require_once './connections.php';
+switch($action)
+{
+    case "delete":
+        //this is a quick and dirty way to make a cart! plz if you're ever going to make a cart... don't do this!
+        $itemid = (isset($_GET['itemid'])) ? $_GET['itemid']: "";
+        if($itemid != "")
+        {
+            $db = connect();
+            $sql = 'DELETE FROM products WHERE sku = :sku';
+            $stmt = $db->prepare($sql);
+            $stmt->bindValue(':sku', $itemid, PDO::PARAM_STR);
+            $stmt->execute();
+            $rowsChanged = $stmt->rowCount();
+            $stmt->closeCursor();
+        }
+        break;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
