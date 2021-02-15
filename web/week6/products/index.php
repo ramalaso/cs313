@@ -4,9 +4,9 @@
  *********************************************/
 
 // Get the database connection file
-require_once './connections.php';
+require_once '../connections.php';
 // Get the accounts model
-require_once './models/product-model.php';
+require_once '../models/product-model.php';
 
  $action = filter_input(INPUT_GET, 'action');
  if($action == NULL) {
