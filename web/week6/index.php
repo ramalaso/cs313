@@ -1,5 +1,5 @@
 <?php 
-// session_start();
+session_start();
 //now in a normal php application of logging in or handling of login requests, i don't suggest doing this, but this is quick and easy(ish)
 $action = (isset($_GET['action'])) ? $_GET['action']: ""; //Ternary operator asking if there is an inputted action
 // require_once ("Product.php");
