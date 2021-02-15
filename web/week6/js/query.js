@@ -67,4 +67,16 @@ $(document).ready(function() {
     $('#inventoryName').val($(this).data('name'));
     $('#inv-quantity').val($(this).data('quantity'));
   })
+
+  $('#addInventory').click(function() {
+    var itemid = $('#inventoryId').val();
+    var item_quantity = parseInt($('#inv-quantity').val());
+    var item_add_quantity = parseInt($('#add-quantity').val());
+    var total = item_quantity + item_add_quantity
+    console.log(itemid)
+    var location = "product-page.php?action=add_inventory&itemid=" + itemid
+    +"&total="+total
+    ;
+    window.location.href = location;
+  });
 });

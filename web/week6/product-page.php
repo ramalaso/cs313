@@ -24,7 +24,7 @@ switch($action)
             $stmt->bindValue(':quantity', $quantity, PDO::PARAM_INT);
             $stmt->bindValue(':sku', $itemid, PDO::PARAM_STR);
             $stmt->execute();
-            // header('Location: /week6/product-page.php');
+            header('Location: /week6/product-page.php');
         }
         break;
     case "delete":
@@ -39,6 +39,21 @@ switch($action)
             $stmt->execute();
             $rowsChanged = $stmt->rowCount();
             $stmt->closeCursor();
+        }
+        break;
+    case "add_inventory":
+        //this is a quick and dirty way to make a cart! plz if you're ever going to make a cart... don't do this!
+        $itemid = (isset($_GET['itemid'])) ? $_GET['itemid']: "";
+        if($itemid != "")
+        {
+            $db = connect();
+            $total  = (isset($_GET['total'])) ? $_GET['total']: "";
+            $sql = 'UPDATE products SET quantity = :quantity WHERE sku = :sku';
+            $stmt = $db->prepare($sql);
+            $stmt->bindValue(':quantity', $total, PDO::PARAM_INT);
+            $stmt->bindValue(':sku', $itemid, PDO::PARAM_STR);
+            $stmt->execute();
+            header('Location: /week6/product-page.php');
         }
         break;
 }
@@ -197,7 +212,7 @@ table tr th {
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Code</label>
-                            <input type="text" class="form-control" id="edit-code" name="edit-sku" required />
+                            <input type="text" class="form-control" id="edit-code" name="edit-sku" required disabled />
                         </div>
                         <div class="form-group">
                             <label>Image</label>
@@ -270,18 +285,23 @@ table tr th {
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Id</label>
-                            <input type="text" class="form-control" id="inventoryId" required />
+                            <input type="text" class="form-control" id="inventoryId" required disabled />
                         </div>
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="text" class="form-control" id="inventoryName" required />
+                            <input type="text" class="form-control" id="inventoryName" required disabled />
                         </div>
                         <div class="form-group">
-                            <label>Quantity</label>
-                            <input type="number" class="form-control" id="inventoryQuantity" required />
+                            <label>Current Quantity</label>
+                            <input type="number" id="inv-quantity" class="form-control" id="inventoryQuantity" value=""
+                                required disabled />
+                        </div>
+                        <div class="form-group">
+                            <label>Add Quantity</label>
+                            <input type="number" id="add-quantity" class="form-control" id="inventoryQuantity" value=""
+                                required />
                         </div>
                     </div>
-                    <input type="number" id="inv-quantity" name="inv-quantity" value="add-inventory">
                     <input type="hidden" name="action" value="add-inventory">
                     <div class="modal-footer">
                         <input type="button" class="btn btn-warning" data-dismiss="modal" value="Cancel" />
