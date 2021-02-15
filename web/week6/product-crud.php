@@ -38,8 +38,9 @@ if (! empty($productArray)) {
                 <a data-id="<?php echo $sku; ?>" href=" #deleteProductModal" class="delete" data-toggle="modal"><i
                         class="material-icons" data-toggle="tooltip" title="Delete"
                         onclick="removeProduct(<?php echo $code; ?>)">&#xE872;</i></a>
-                <a href="#addInventoryModal" class="inventory" data-toggle="modal"><i class="material-icons"
-                        data-toggle="tooltip" title="Add Inventory"
+                <a data-id="<?php echo $sku; ?>" data-name="<?php echo $name; ?>"
+                    data-quantity="<?php echo $quantity; ?>" href="#addInventoryModal" class="inventory"
+                    data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Add Inventory"
                         onclick="addInventory(<?php echo $code; ?>)">&#xE147;</i>
                 </a>
             </td>

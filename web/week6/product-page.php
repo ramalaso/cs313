@@ -6,17 +6,15 @@ switch($action)
 {
     case "update":
         //this is a quick and dirty way to make a cart! plz if you're ever going to make a cart... don't do this!
-        echo "We are updating...";
         $itemid = (isset($_GET['itemid'])) ? $_GET['itemid']: "";
         if($itemid != "")
         {
-            $sku = filter_input(INPUT_POST, 'sku', FILTER_SANITIZE_STRING);
-            $image_product = filter_input(INPUT_POST, 'image', FILTER_SANITIZE_STRING);
-            $product_name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
-            $quantity = filter_input(INPUT_POST, 'quantity', FILTER_SANITIZE_NUMBER_INT);
-            $price = filter_input(INPUT_POST, 'price', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
-            $product_description = "Fruit";
             $db = connect();
+            $image_product  = (isset($_GET['itemimage'])) ? $_GET['itemimage']: "";
+            $product_name  = (isset($_GET['itemname'])) ? $_GET['itemname']: "";
+            $quantity  = (isset($_GET['itemquantity'])) ? $_GET['itemquantity']: "";
+            $price  = (isset($_GET['itemprice'])) ? $_GET['itemprice']: "";
+            $product_description = "Fruit";
             $sql = 'UPDATE products SET product_name = :product_name, price = :price, product_description = :product_description, image_product = :image_product, quantity = :quantity WHERE sku = :sku';
             $stmt = $db->prepare($sql);
             $stmt->bindValue(':product_name', $product_name, PDO::PARAM_STR);
@@ -24,9 +22,9 @@ switch($action)
             $stmt->bindValue(':product_description', $product_description, PDO::PARAM_STR);
             $stmt->bindValue(':image_product', $image_product, PDO::PARAM_STR);
             $stmt->bindValue(':quantity', $quantity, PDO::PARAM_INT);
-            $stmt->bindValue(':sku', $sku, PDO::PARAM_STR);
+            $stmt->bindValue(':sku', $itemid, PDO::PARAM_STR);
             $stmt->execute();
-            header('Location: /week6/product-page.php');
+            // header('Location: /week6/product-page.php');
         }
         break;
     case "delete":
@@ -189,7 +187,7 @@ table tr th {
     <div id="editProductModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form action="products/index.php" method="POST">
+                <form method="POST">
                     <div class="modal-header">
                         <h4 class="modal-title">Edit Product</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
@@ -199,31 +197,31 @@ table tr th {
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Code</label>
-                            <input type="text" class="form-control" id="edit-code" name="sku" required />
+                            <input type="text" class="form-control" id="edit-code" name="edit-sku" required />
                         </div>
                         <div class="form-group">
                             <label>Image</label>
-                            <input type="text" class="form-control" id="edit-image" name="image" required />
+                            <input type="text" class="form-control" id="edit-image" name="edit-image" required />
                         </div>
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="text" class="form-control" id="edit-name" name="name" required />
+                            <input type="text" class="form-control" id="edit-name" name="edit-name" required />
                         </div>
                         <div class="form-group">
                             <label>Quantity</label>
-                            <input type="number" class="form-control" name="quantity" id="edit-quantity" required />
+                            <input type="number" class="form-control" name="edit-quantity" id="edit-quantity"
+                                required />
                         </div>
                         <div class="form-group">
                             <label>Price</label>
-                            <input type="number" class="form-control" id="edit-price" name="price"
-                                value="<?php echo $_SESSION['price']; ?>" required />
+                            <input type="number" class="form-control" id="edit-price" name="edit-price" required />
                         </div>
                     </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-warning" data-dismiss="modal" value="Cancel" />
-                        <input type="button" class="btn btn-info" id="saveChanges" data-dismiss="modal" value="Save" />
+                        <input type="submit" class="btn btn-info" id="saveChanges" data-dismiss="modal" value="Save" />
                     </div>
-                    <input type="hidden" name="action" value="update">
+                    <input type="hidden" name="action" value="update-product">
                 </form>
             </div>
         </div>
@@ -262,7 +260,7 @@ table tr th {
     <div id="addInventoryModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form>
+                <form action="products/index.php" method="POST">
                     <div class="modal-header">
                         <h4 class="modal-title">Add Inventory</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
@@ -283,10 +281,13 @@ table tr th {
                             <input type="number" class="form-control" id="inventoryQuantity" required />
                         </div>
                     </div>
+                    <input type="number" id="inv-quantity" name="inv-quantity" value="add-inventory">
+                    <input type="hidden" name="action" value="add-inventory">
                     <div class="modal-footer">
                         <input type="button" class="btn btn-warning" data-dismiss="modal" value="Cancel" />
-                        <input type="button" class="btn btn-info" id="addInventory" data-dismiss="modal" value="Add" />
+                        <input type="submit" class="btn btn-info" id="addInventory" data-dismiss="modal" value="Add" />
                     </div>
+
                 </form>
             </div>
         </div>

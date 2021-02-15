@@ -40,10 +40,31 @@ $(document).ready(function() {
     window.location.href = location;
   });
 
-  // $('#saveChanges').click(function() {
-  //   var itemid = $('#edit-code').val();
-  //   console.log(itemid)
-  //   var location = "product-page.php?action=update&itemid=" + itemid;
-  //   window.location.href = location;
-  // });
+  $('#saveChanges').click(function() {
+    var itemid = $('#edit-code').val();
+    var item_name = $('#edit-name').val();
+    var item_image = $('#edit-image').val();
+    var item_quantity = $('#edit-quantity').val();
+    var item_price = $('#edit-price').val();
+    console.log(itemid)
+    var location = "product-page.php?action=update&itemid=" + itemid
+    +"&itemname="+item_name
+    +"&itemimage="+item_image
+    +"&itemquantity="+item_quantity
+    +"&itemprice="+item_price
+    ;
+    window.location.href = location;
+  });
+
+  $('.inventory').click(function () {
+    var data_id = '';
+    if (typeof $(this).data('id') !== 'undefined') {
+      console.log('WE are in')
+      data_id = $(this).data('id');
+      console.log(data_id)
+    }
+    $('#inventoryId').val($(this).data('id'));
+    $('#inventoryName').val($(this).data('name'));
+    $('#inv-quantity').val($(this).data('quantity'));
+  })
 });
