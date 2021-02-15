@@ -11,11 +11,11 @@ switch($action)
         $itemid = (isset($_GET['itemid'])) ? $_GET['itemid']: "";
         if($itemid != "")
         {
-            if($_SESSION['cart'] == "")
+            if($_SESSION['new_cart'] == "")
             {
-                unset($_SESSION['cart'][$itemid]);
+                unset($_SESSION['new_cart'][$itemid]);
             } else {
-                unset($_SESSION['cart'][$itemid]);
+                unset($_SESSION['new_cart'][$itemid]);
             }
         }
         break;

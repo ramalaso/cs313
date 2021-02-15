@@ -12,11 +12,11 @@ switch($action)
         $itemid = (isset($_GET['itemid'])) ? $_GET['itemid']: "";
         if($itemid != "")
         {
-            if($_SESSION['cart'] == "")
+            if($_SESSION['new_cart'] == "")
             {
-                $_SESSION['cart'] = array($products[$itemid]);
+                $_SESSION['new_cart'] = array($products[$itemid]);
             } else {
-                array_push($_SESSION['cart'], $products[$itemid]);
+                array_push($_SESSION['new_cart'], $products[$itemid]);
             }
         }
         break;
@@ -26,19 +26,19 @@ switch($action)
         $itemid = (isset($_GET['itemid'])) ? $_GET['itemid']: "";
         if($itemid != "")
         {
-            if($_SESSION['cart'] == "")
+            if($_SESSION['new_cart'] == "")
             {
-                unset($_SESSION['cart'][$itemid]);
+                unset($_SESSION['new_cart'][$itemid]);
             } else {
-                unset($_SESSION['cart'][$itemid]);
+                unset($_SESSION['new_cart'][$itemid]);
             }
         }
         break;
     case "clearcart":
-        $_SESSION['cart'] = "";
+        $_SESSION['new_cart'] = "";
         break;
     case "new":
-        $_SESSION['cart'] = "";
+        $_SESSION['new_cart'] = "";
         break;
 }
 ?>

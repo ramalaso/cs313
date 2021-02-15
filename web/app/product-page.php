@@ -1,3 +1,63 @@
+<?php 
+session_start();
+$action = (isset($_GET['action'])) ? $_GET['action']: ""; //Ternary operator asking if there 
+require_once './connections.php';
+switch($action)
+{
+    case "update":
+        //this is a quick and dirty way to make a cart! plz if you're ever going to make a cart... don't do this!
+        $itemid = (isset($_GET['itemid'])) ? $_GET['itemid']: "";
+        if($itemid != "")
+        {
+            $db = connect();
+            $image_product  = (isset($_GET['itemimage'])) ? $_GET['itemimage']: "";
+            $product_name  = (isset($_GET['itemname'])) ? $_GET['itemname']: "";
+            $quantity  = (isset($_GET['itemquantity'])) ? $_GET['itemquantity']: "";
+            $price  = (isset($_GET['itemprice'])) ? $_GET['itemprice']: "";
+            $product_description = "Fruit";
+            $sql = 'UPDATE products SET product_name = :product_name, price = :price, product_description = :product_description, image_product = :image_product, quantity = :quantity WHERE sku = :sku';
+            $stmt = $db->prepare($sql);
+            $stmt->bindValue(':product_name', $product_name, PDO::PARAM_STR);
+            $stmt->bindValue(':price', $price, PDO::PARAM_STR);
+            $stmt->bindValue(':product_description', $product_description, PDO::PARAM_STR);
+            $stmt->bindValue(':image_product', $image_product, PDO::PARAM_STR);
+            $stmt->bindValue(':quantity', $quantity, PDO::PARAM_INT);
+            $stmt->bindValue(':sku', $itemid, PDO::PARAM_STR);
+            $stmt->execute();
+            header('Location: /week6/product-page.php');
+        }
+        break;
+    case "delete":
+        //this is a quick and dirty way to make a cart! plz if you're ever going to make a cart... don't do this!
+        $itemid = (isset($_GET['itemid'])) ? $_GET['itemid']: "";
+        if($itemid != "")
+        {
+            $db = connect();
+            $sql = 'DELETE FROM products WHERE sku = :sku';
+            $stmt = $db->prepare($sql);
+            $stmt->bindValue(':sku', $itemid, PDO::PARAM_STR);
+            $stmt->execute();
+            $rowsChanged = $stmt->rowCount();
+            $stmt->closeCursor();
+        }
+        break;
+    case "add_inventory":
+        //this is a quick and dirty way to make a cart! plz if you're ever going to make a cart... don't do this!
+        $itemid = (isset($_GET['itemid'])) ? $_GET['itemid']: "";
+        if($itemid != "")
+        {
+            $db = connect();
+            $total  = (isset($_GET['total'])) ? $_GET['total']: "";
+            $sql = 'UPDATE products SET quantity = :quantity WHERE sku = :sku';
+            $stmt = $db->prepare($sql);
+            $stmt->bindValue(':quantity', $total, PDO::PARAM_INT);
+            $stmt->bindValue(':sku', $itemid, PDO::PARAM_STR);
+            $stmt->execute();
+            header('Location: /week6/product-page.php');
+        }
+        break;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -89,8 +149,8 @@ table tr th {
                 </div>
 
                 <?php 
-                             require_once "./product-crud.php";
-                        ?>
+                    require_once "./product-crud.php";
+                ?>
 
             </div>
         </div>
@@ -99,7 +159,7 @@ table tr th {
     <div id="addProductsModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form>
+                <form action="products/index.php" method="POST">
                     <div class="modal-header">
                         <h4 class="modal-title">Add New Product</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
@@ -108,16 +168,24 @@ table tr th {
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
+                            <label>Code</label>
+                            <input type="text" class="form-control" id="image" name="sku" required />
+                        </div>
+                        <div class="form-group">
+                            <label>Image</label>
+                            <input type="text" class="form-control" id="image" name="image" required />
+                        </div>
+                        <div class="form-group">
                             <label>Name</label>
-                            <input type="text" class="form-control" id="addName" required />
+                            <input type="text" class="form-control" id="addName" name="name" required />
                         </div>
                         <div class="form-group">
                             <label>Quantity</label>
-                            <input type="number" class="form-control" id="addQuantity" required />
+                            <input type="number" class="form-control" name="quantity" id="addQuantity" required />
                         </div>
                         <div class="form-group">
                             <label>Price</label>
-                            <input type="number" class="form-control" id="addPrice" required />
+                            <input type="number" class="form-control" id="addPrice" name="price" required />
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -125,15 +193,16 @@ table tr th {
                             data-dismiss="modal" id="cancelAdd" />
                         <input type="submit" class="btn btn-success" value="Add" id="submitAdd" />
                     </div>
+                    <input type="hidden" name="action" value="add-product">
                 </form>
             </div>
         </div>
     </div>
     <!-- Edit Modal HTML -->
-    <div id="editProductModal" class="modal fade">
+    <div id="editProductModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form>
+                <form method="POST">
                     <div class="modal-header">
                         <h4 class="modal-title">Edit Product</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
@@ -142,26 +211,32 @@ table tr th {
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>Id</label>
-                            <input type="text" class="form-control" id="updateId" required />
+                            <label>Code</label>
+                            <input type="text" class="form-control" id="edit-code" name="edit-sku" required disabled />
+                        </div>
+                        <div class="form-group">
+                            <label>Image</label>
+                            <input type="text" class="form-control" id="edit-image" name="edit-image" required />
                         </div>
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="text" class="form-control" id="updateName" required />
+                            <input type="text" class="form-control" id="edit-name" name="edit-name" required />
                         </div>
                         <div class="form-group">
                             <label>Quantity</label>
-                            <input type="number" class="form-control" id="updateQuantity" required />
+                            <input type="number" class="form-control" name="edit-quantity" id="edit-quantity"
+                                required />
                         </div>
                         <div class="form-group">
                             <label>Price</label>
-                            <input type="number" class="form-control" id="updatePrice" required />
+                            <input type="number" class="form-control" id="edit-price" name="edit-price" required />
                         </div>
                     </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-warning" data-dismiss="modal" value="Cancel" />
-                        <input type="button" class="btn btn-info" id="saveChanges" data-dismiss="modal" value="Save" />
+                        <input type="submit" class="btn btn-info" id="saveChanges" data-dismiss="modal" value="Save" />
                     </div>
+                    <input type="hidden" name="action" value="update-product">
                 </form>
             </div>
         </div>
@@ -200,7 +275,7 @@ table tr th {
     <div id="addInventoryModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form>
+                <form action="products/index.php" method="POST">
                     <div class="modal-header">
                         <h4 class="modal-title">Add Inventory</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
@@ -210,26 +285,54 @@ table tr th {
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Id</label>
-                            <input type="text" class="form-control" id="inventoryId" required />
+                            <input type="text" class="form-control" id="inventoryId" required disabled />
                         </div>
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="text" class="form-control" id="inventoryName" required />
+                            <input type="text" class="form-control" id="inventoryName" required disabled />
                         </div>
                         <div class="form-group">
-                            <label>Quantity</label>
-                            <input type="number" class="form-control" id="inventoryQuantity" required />
+                            <label>Current Quantity</label>
+                            <input type="number" id="inv-quantity" class="form-control" id="inventoryQuantity" value=""
+                                required disabled />
+                        </div>
+                        <div class="form-group">
+                            <label>Add Quantity</label>
+                            <input type="number" id="add-quantity" class="form-control" id="inventoryQuantity" value=""
+                                required />
                         </div>
                     </div>
+                    <input type="hidden" name="action" value="add-inventory">
                     <div class="modal-footer">
                         <input type="button" class="btn btn-warning" data-dismiss="modal" value="Cancel" />
-                        <input type="button" class="btn btn-info" id="addInventory" data-dismiss="modal" value="Add" />
+                        <input type="submit" class="btn btn-info" id="addInventory" data-dismiss="modal" value="Add" />
                     </div>
+
                 </form>
             </div>
         </div>
     </div>
 
+    <!-- <script type="text/javascript" language="javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"> </script> -->
+    <!-- <script type="text/javascript" language="javascript">
+    $(function() {
+        $('.delete').click(function() {
+            var itemid = $(this).attr("delete_id");
+            var location = "product-page.php?action=delete&itemid=" + itemid;
+            window.location.href = location;
+        });
+        $('.edit').click(function() {
+            var itemid = $(this).attr("edit_id");
+            var location = "product-page.php?action=edit&itemid=" + itemid;
+            window.location.href = location;
+        });
+        $('.update').click(function() {
+            var itemid = $(this).attr("update_id");
+            var location = "product-page.php?action=update&itemid=" + itemid;
+            window.location.href = location;
+        });
+    });
+    </script> -->
     <script src="js/query.js"></script>
 </body>
 
