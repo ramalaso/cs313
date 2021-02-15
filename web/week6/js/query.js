@@ -21,3 +21,21 @@ $(document).ready(function () {
     }
   });
 });
+
+$(function() {
+  $('.delete').click(function() {
+      var itemid = $(this).attr("delete_id");
+      var location = "product-page.php?action=delete&itemid=" + itemid;
+      window.location.href = location;
+  });
+  $('.edit').click(function() {
+      var itemid = $(this).attr("edit_id");
+      var location = "product-page.php?action=edit&itemid=" + itemid;
+      window.location.href = location;
+  });
+  $('.update').click(function() {
+      var itemid = $(this).attr("update_id");
+      var location = "product-page.php?action=update&itemid=" + itemid;
+      window.location.href = location;
+  });
+});
