@@ -31,10 +31,17 @@ if (! empty($productArray)) {
             <td><?php echo $quantity; ?></td>
             <td><?php echo $price; ?></td>
             <td>
-                <a href="#editProductModal" class="edit" edit_id="<?php echo $sku; ?>" data-toggle="modal"><i
-                        class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                <a href="#deleteProductModal" class="delete" delete_id="<?php echo $sku; ?>" data-toggle="modal"><i
-                        class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                <a data-id="<?php echo $sku; ?>" data-image="<?php echo $image; ?>" data-name="ramalaso"
+                    data-quantity="<?php echo $quantity; ?>" data-price="<?php echo $price; ?>" class="edit-product"
+                    data-toggle="modal" href="#editProductModal"><i class="material-icons" data-toggle="tooltip"
+                        title="Edit">&#xE254;</i></a>
+                <a href=" #deleteProductModal" class="delete" data-toggle="modal"><i class="material-icons"
+                        data-toggle="tooltip" title="Delete"
+                        onclick="removeProduct(<?php echo $code; ?>)">&#xE872;</i></a>
+                <a href="#addInventoryModal" class="inventory" data-toggle="modal"><i class="material-icons"
+                        data-toggle="tooltip" title="Add Inventory"
+                        onclick="addInventory(<?php echo $code; ?>)">&#xE147;</i>
+                </a>
             </td>
         </tr>
         <?php

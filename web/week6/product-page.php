@@ -1,42 +1,3 @@
-<?php 
-session_start();
-$action = (isset($_GET['action'])) ? $_GET['action']: ""; //Ternary operator asking if there 
-require_once './connections.php';
-switch($action)
-{
-    case "edit":
-        //this is a quick and dirty way to make a cart! plz if you're ever going to make a cart... don't do this!
-        
-        $itemid = (isset($_GET['itemid'])) ? $_GET['itemid']: "";
-        if($itemid != "")
-        {
-            $db = connect();
-            $sql = 'SELECT * FROM products WHERE sku = :sku';
-            $stmt = $db->prepare($sql);
-            $stmt->bindValue(':sku', $itemid, PDO::PARAM_STR);
-            $stmt->execute();
-            $invInfo = $stmt->fetch(PDO::FETCH_ASSOC);
-            $stmt->closeCursor();
-            $product = $invInfo;
-            $_SESSION['product'] = $product;
-        }
-        break;
-    case "delete":
-        //this is a quick and dirty way to make a cart! plz if you're ever going to make a cart... don't do this!
-        $itemid = (isset($_GET['itemid'])) ? $_GET['itemid']: "";
-        if($itemid != "")
-        {
-            $db = connect();
-            $sql = 'DELETE FROM products WHERE sku = :sku';
-            $stmt = $db->prepare($sql);
-            $stmt->bindValue(':sku', $itemid, PDO::PARAM_STR);
-            $stmt->execute();
-            $rowsChanged = $stmt->rowCount();
-            $stmt->closeCursor();
-        }
-        break;
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -191,28 +152,24 @@ table tr th {
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Code</label>
-                            <input type="text" class="form-control" id="image" name="code"
-                                value="<?php echo $_SESSION['product']['sku']; ?>" required />
+                            <input type="text" class="form-control" id="edit-code" name="code" required />
                         </div>
                         <div class="form-group">
                             <label>Image</label>
-                            <input type="text" class="form-control" id="image" name="image"
-                                value="<?php echo $_SESSION['product']['image_product']; ?>" required />
+                            <input type="text" class="form-control" id="edit-image" name="image" required />
                         </div>
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="text" class="form-control" id="addName" name="name"
-                                value="<?php echo $_SESSION['product']['product_name']; ?>" required />
+                            <input type="text" class="form-control" id="edit-name" name="name" required />
                         </div>
                         <div class="form-group">
                             <label>Quantity</label>
-                            <input type="number" class="form-control" name="quantity"
-                                value="<?php echo $_SESSION['product']['quantity']; ?>" id="addQuantity" required />
+                            <input type="number" class="form-control" name="quantity" id="edit-quantity" required />
                         </div>
                         <div class="form-group">
                             <label>Price</label>
-                            <input type="number" class="form-control" id="addPrice" name="price"
-                                value="<?php echo $_SESSION['product']['price']; ?>" required />
+                            <input type="number" class="form-control" id="edit-price" name="price"
+                                value="<?php echo $_SESSION['price']; ?>" required />
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -307,7 +264,7 @@ table tr th {
         });
     });
     </script> -->
-    <script src="js/query.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>
