@@ -28,7 +28,7 @@ require_once '../models/product-model.php';
         // Send the data to the model
         $productOutcome =  regProduct($sku, $product_name, $price, $product_description, $image_product, $category_id, $created_at, $quantity);
 
-        header('Location: ../index.php');
+        header('Location: /week6/product-page.php');
         break;
       case "delete":
         break;
