@@ -148,7 +148,7 @@ table tr th {
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Code</label>
-                            <input type="text" class="form-control" id="image" name="code" required />
+                            <input type="text" class="form-control" id="image" name="sku" required />
                         </div>
                         <div class="form-group">
                             <label>Image</label>

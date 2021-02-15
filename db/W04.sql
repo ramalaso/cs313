@@ -10,6 +10,7 @@ create table Products (
 	image_product varchar(100) NOT NULL,
 	category_id int references Categories(category_id) NOT NULL,
 	created_at date NOT NULL
+	quantity int NOT NULL
 );
 
 -- Categories table
