@@ -31,7 +31,7 @@ if (! empty($productArray)) {
             <td><?php echo $quantity; ?></td>
             <td><?php echo $price; ?></td>
             <td>
-                <a data-id="<?php echo $sku; ?>" data-image="<?php echo $image; ?>" data-name="ramalaso"
+                <a data-id="<?php echo $sku; ?>" data-image="<?php echo $image; ?>" data-name="<?php echo $name; ?>"
                     data-quantity="<?php echo $quantity; ?>" data-price="<?php echo $price; ?>" class="edit-product"
                     data-toggle="modal" href="#editProductModal"><i class="material-icons" data-toggle="tooltip"
                         title="Edit">&#xE254;</i></a>
