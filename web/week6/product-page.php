@@ -288,7 +288,7 @@ table tr th {
     </div>
 
     <!-- <script type="text/javascript" language="javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"> </script> -->
-    <script type="text/javascript" language="javascript">
+    <!-- <script type="text/javascript" language="javascript">
     $(function() {
         $('.delete').click(function() {
             var itemid = $(this).attr("delete_id");
@@ -306,7 +306,7 @@ table tr th {
             window.location.href = location;
         });
     });
-    </script>
+    </script> -->
 </body>
 
 </html>
