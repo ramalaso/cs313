@@ -38,5 +38,12 @@ $(document).ready(function() {
     console.log(itemid)
     var location = "product-page.php?action=delete&itemid=" + itemid;
     window.location.href = location;
-});
+  });
+
+  // $('#saveChanges').click(function() {
+  //   var itemid = $('#edit-code').val();
+  //   console.log(itemid)
+  //   var location = "product-page.php?action=update&itemid=" + itemid;
+  //   window.location.href = location;
+  // });
 });
