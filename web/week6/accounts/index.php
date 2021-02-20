@@ -7,11 +7,11 @@
 session_start();
 
 // Get the database connection file
-require_once '../connections.php';
+require '../connections.php';
 // Get the accounts model
-require_once '../models/accounts-model.php';
+require '../models/accounts-model.php';
 
-require_once '../library/functions.php';
+require '../library/functions.php';
 
 // var_dump($classifications);
 // exit;
@@ -110,7 +110,7 @@ require_once '../library/functions.php';
       // Remove the password from the array
       // the array_pop function removes the last
       // element from an array
-      // array_pop($clientData);
+      array_pop($clientData);
       // Store the array into the session
       $_SESSION['clientData'] = $clientData;
       // Send them to the admin view
