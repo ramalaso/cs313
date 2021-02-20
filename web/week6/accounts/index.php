@@ -95,8 +95,9 @@ require_once '../library/functions.php';
       $clientData = getClient($clientEmail);
       // Compare the password just submitted against
       // the hashed password for the matching client
-      
+      print_r($clientData);
       $hashCheck = password_verify($clientPassword, $clientData['clientPassword']);
+      echo('the value of hasdhed verifief is:'.$hashCheck);
       // If the hashes don't match create an error
       // and return to the login view
       if(!$hashCheck) {
