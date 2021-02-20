@@ -117,7 +117,7 @@ require_once '../library/functions.php';
       // $_SESSION['clientData'] = $clientData;
       // Send them to the admin view
       setcookie('clientemail', $clientData['clientemail'], strtotime('+1 year'), '/');
-      setcookie('clientname', $clientData['clientname'], strtotime('+1 year'), '/');
+      setcookie('clientname', $clientData['clientfirstname'], strtotime('+1 year'), '/');
       header('Location: ../index.php');
       exit;
         break;
