@@ -1,10 +1,10 @@
 <?php
 
-require '../connections.php';
+require './connections.php';
 // Get the accounts model
-require '../models/accounts-model.php';
+require './models/accounts-model.php';
 
-require '../library/functions.php';
+require './library/functions.php';
 
 switch ($action) {
     case 'login':
