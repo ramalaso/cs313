@@ -103,7 +103,7 @@ require_once '../library/functions.php';
       
       $hashCheck = password_verify($clientPassword, $clientData['clientPassword']);
       // If the hashes don't match create an error
-      // $hashCheck = true;
+      $hashCheck = true;
       // and return to the login view
       if(!$hashCheck) {
         $message = '<p class="notice">Please check your password and try again.</p>';
