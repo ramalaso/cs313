@@ -106,7 +106,9 @@ require_once '../library/functions.php';
         exit;
       }
       // A valid user exists, log them in
-      $_SESSION['loggedin'] = TRUE;
+      $_SESSION['loggedin'] = true;
+      setcookie('loggedin', true, strtotime('+1 year'), '/');
+
       // Remove the password from the array
       // the array_pop function removes the last
       // element from an array
@@ -114,7 +116,7 @@ require_once '../library/functions.php';
       // Store the array into the session
       $_SESSION['clientData'] = $clientData;
       // Send them to the admin view
-      setcookie('firstname', $clientData['clientfirstname'], strtotime('+1 year'), '/');
+      setcookie('clientData', $clientData, strtotime('+1 year'), '/');
       header('Location: ../index.php');
       exit;
         break;
