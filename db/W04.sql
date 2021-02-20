@@ -60,6 +60,6 @@ create table clients (
   clientLastname varchar(25) NOT NULL,
   clientEmail varchar(40) NOT NULL,
   clientPassword varchar(255) NOT NULL,
-  clientLevel int NOT NULL DEFAULT '1',
+  clientLevel varchar(3) DEFAULT '1',
   comment text DEFAULT NULL
 ) 
