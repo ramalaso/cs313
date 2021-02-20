@@ -116,7 +116,8 @@ require_once '../library/functions.php';
       // Store the array into the session
       // $_SESSION['clientData'] = $clientData;
       // Send them to the admin view
-      setcookie('clientEmail', $clientData['clientemail'], strtotime('+1 year'), '/');
+      setcookie('clientemail', $clientData['clientemail'], strtotime('+1 year'), '/');
+      setcookie('clientname', $clientData['clientname'], strtotime('+1 year'), '/');
       header('Location: ../index.php');
       exit;
         break;
