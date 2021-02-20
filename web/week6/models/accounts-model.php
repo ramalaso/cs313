@@ -49,7 +49,7 @@ function regClient($clientFirstname, $clientLastname, $clientEmail, $clientPassw
     $stmt->bindValue(':clientEmail', $clientEmail, PDO::PARAM_STR);
     $stmt->execute();
     $clientData = $stmt->fetch(PDO::FETCH_ASSOC);
-    $stmt->closeCursor();
+    // $stmt->closeCursor();
     return $clientData;
    }
 

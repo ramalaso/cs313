@@ -78,10 +78,7 @@ require_once '../library/functions.php';
         break;
     case 'login':
       $clientEmail = filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_EMAIL);
-      // $clientEmail = checkEmail($clientEmail);
-      echo '<script language="javascript">';
-      echo 'alert("Email".$clientEmail)';
-      echo '</script>';
+      $clientEmail = checkEmail($clientEmail);
       $clientPassword = filter_input(INPUT_POST, 'clientPassword', FILTER_SANITIZE_STRING);
       $passwordCheck = checkPassword($clientPassword);
       
@@ -98,9 +95,6 @@ require_once '../library/functions.php';
       $clientData = getClient($clientEmail);
       // Compare the password just submitted against
       // the hashed password for the matching client
-      echo '<script language="javascript">';
-      echo 'alert("client data".$clientData)';
-      echo '</script>';
       $hashCheck = password_verify($clientPassword, $clientData['clientPassword']);
       // If the hashes don't match create an error
       // and return to the login view
