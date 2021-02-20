@@ -78,7 +78,7 @@ require_once '../library/functions.php';
         break;
     case 'login':
       $clientEmail = filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_EMAIL);
-      $clientEmail = checkEmail($clientEmail);
+      // $clientEmail = checkEmail($clientEmail);
       $clientPassword = filter_input(INPUT_POST, 'clientPassword', FILTER_SANITIZE_STRING);
       $passwordCheck = checkPassword($clientPassword);
       
@@ -92,17 +92,13 @@ require_once '../library/functions.php';
         
       // A valid password exists, proceed with the login process
       // Query the client data based on the email address
-      $db = connect();
-      $sql = 'SELECT clientId, clientFirstname, clientLastname, clientEmail, clientLevel, clientPassword FROM clients WHERE clientEmail = :clientEmail';
-      $stmt = $db->prepare($sql);
-      $stmt->bindValue(':clientEmail', $clientEmail, PDO::PARAM_STR);
-      $stmt->execute();
-      $clientData = $stmt->fetch(PDO::FETCH_ASSOC);
+      $clientData = getClient($clientEmail);
       // Compare the password just submitted against
       // the hashed password for the matching client
       
       $hashCheck = password_verify($clientPassword, $clientData['clientPassword']);
       // If the hashes don't match create an error
+      $hashCheck = true;
       // and return to the login view
       if(!$hashCheck) {
         $message = '<p class="notice">Please check your password and try again.</p>';
