@@ -3,9 +3,6 @@
  * Account  Controller
  *********************************************/
 
-// Create or access a Session
-session_start();
-
 // Get the database connection file
 require_once '../connections.php';
 // Get the accounts model
