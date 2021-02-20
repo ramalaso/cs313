@@ -83,12 +83,12 @@ require '../library/functions.php';
       $passwordCheck = checkPassword($clientPassword);
       
       // Run basic checks, return if errors
-      if (empty($clientEmail) || empty($passwordCheck)) {
-       $message = '<p class="notice">Please provide a valid email address and password.</p>';
-       $_SESSION['message'] = $message;
-       header('Location: ../login.php');
-       exit;
-      }
+      // if (empty($clientEmail) || empty($passwordCheck)) {
+      //  $message = '<p class="notice">Please provide a valid email address and password.</p>';
+      //  $_SESSION['message'] = $message;
+      //  header('Location: ../login.php');
+      //  exit;
+      // }
       
       // A valid password exists, proceed with the login process
       // Query the client data based on the email address
