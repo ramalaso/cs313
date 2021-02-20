@@ -46,7 +46,7 @@ function regClient($clientFirstname, $clientLastname, $clientEmail, $clientPassw
     $db = connect();
     $sql = 'SELECT clientid, clientfirstname, clientlastname, clientemail, clientlevel, clientpassword FROM clients WHERE clientemail = :clientemail';
     $stmt = $db->prepare($sql);
-    $stmt->bindValue(':clientEmail', $clientemail, PDO::PARAM_STR);
+    $stmt->bindValue(':clientemail', $clientemail, PDO::PARAM_STR);
     $stmt->execute();
     $clientData = $stmt->fetch(PDO::FETCH_ASSOC);
     $stmt->closeCursor();
