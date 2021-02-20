@@ -34,8 +34,8 @@
             <div class="containerLogin">
                 <form id="form" class="form" action="./accounts/index.php" method="POST">
                     <h2>Login</h2>
-                    <?php if (isset($_SESSION['message-failed'])) {
-               echo "<small>".$_SESSION['message-failed']."</small>";
+                    <?php if (isset($_SESSION['error_message'])) {
+               echo "<small>".$_SESSION['error_message']."</small>";
             } ?>
                     <div class="form-control">
                         <label for="email">Email</label>

@@ -49,7 +49,6 @@ require_once '../library/functions.php';
           exit;
           }
 
-          
         // Check for missing data
         if (empty($clientFirstname) || empty($clientLastname) || empty($clientEmail) || empty($checkPassword)) {
           $_SESSION["message-failed"] = '<p>Please provide information for all empty form fields.</p>';
@@ -57,9 +56,9 @@ require_once '../library/functions.php';
           exit;
         }
         
-        $clientPassword = htmlspecialchars($clientPassword);
         // Hash the checked password
         $hashedPassword = password_hash($clientPassword, PASSWORD_DEFAULT);
+
 
         // Send the data to the model
         $regOutcome = regClient($clientFirstname, $clientLastname, $clientEmail, $hashedPassword);
@@ -75,6 +74,7 @@ require_once '../library/functions.php';
           header('Location: ../registration.php');
           exit;
         }
+
         break;
     case 'login':
       $clientEmail = filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_EMAIL);
@@ -95,15 +95,15 @@ require_once '../library/functions.php';
       $clientData = getClient($clientEmail);
       // Compare the password just submitted against
       // the hashed password for the matching client
-      print_r($clientData);
+      
       $hashCheck = password_verify($clientPassword, $clientData['clientPassword']);
-      echo('the value of hasdhed verifief is:'.$hashCheck);
       // If the hashes don't match create an error
       // and return to the login view
       if(!$hashCheck) {
         $message = '<p class="notice">Please check your password and try again.</p>';
-        $_SESSION['message'] = $message;
+        $_SESSION['error_message'] = $message;
         header('Location: ../login.php');
+        die();
         exit;
       }
       // A valid user exists, log them in
