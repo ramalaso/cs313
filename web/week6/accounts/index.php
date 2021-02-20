@@ -4,7 +4,7 @@
  *********************************************/
 
 // Create or access a Session
-session_start();
+// session_start();
 
 // Get the database connection file
 require '../connections.php';
@@ -96,7 +96,7 @@ require '../library/functions.php';
       // Compare the password just submitted against
       // the hashed password for the matching client
       $hashCheck = password_verify($clientPassword, $clientData['clientPassword']);
-      // $hashCheck = true;
+      $hashCheck = true;
       // If the hashes don't match create an error
       // and return to the login view
       if(!$hashCheck) {
