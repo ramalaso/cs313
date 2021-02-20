@@ -4,8 +4,8 @@
             <a href="./index.php"><i style="color:white; align: right" class="fas fa-home fa-2x pl-0"></i><span
                     style="color:white; text-align: center; font-size:1.5rem">Shopping LCG</span></a>
 
-            <?php if (isset($_SESSION['loggedin']) && $_SESSION['clientData']['clientEmail']!='osalamar@gmail.com'){
-                echo "<span id='cookie' style='color:white; margin:0 30px; '>Welcome ".($_SESSION['clientData']['clientFirstname'])."</span>
+            <?php if (isset($_SESSION['loggedin']) && $_SESSION['clientData']['clientemail']!='osalamar@gmail.com'){
+                echo "<span id='cookie' style='color:white; margin:0 30px; '>Welcome ".($_SESSION['clientData']['clientfirstname'])."</span>
                 <a href='./accounts/index.php?action=logout' title='Login or register with LCG Shopping' class='float-right' style='color:white '><i style='color:white; margin:0 10px; '
                 class='fas fa-sign-in-alt fa-2x pl-0'>
                     </i>Log out</a> 
@@ -14,8 +14,8 @@
                     style='color:white; margin:0 10px; ' class='fas fa-shopping-cart fa-2x pl-0'>
                 </i>Shop</a>
                     ";
-            } else if (isset($_SESSION['loggedin']) && $_SESSION['clientData']['clientEmail']=='osalamar@gmail.com') {
-                echo "<span id='cookie' style='color:white; margin:0 30px; '>Welcome ".($_SESSION['clientData']['clientFirstname'])."</span>
+            } else if (isset($_SESSION['loggedin']) && $_SESSION['clientData']['clientemail']=='osalamar@gmail.com') {
+                echo "<span id='cookie' style='color:white; margin:0 30px; '>Welcome ".($_SESSION['clientData']['clientfirstname'])."</span>
                 <a href='./accounts/index.php?action=logout' title='Login or register with LCG Shopping' class='float-right' style='color:white '><i style='color:white; margin:0 10px; '
                 class='fas fa-sign-in-alt fa-2x pl-0'>
                     </i>Log out</a> 
