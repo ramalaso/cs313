@@ -83,12 +83,13 @@ require '../library/functions.php';
       $passwordCheck = checkPassword($clientPassword);
       
       // Run basic checks, return if errors
-      // if (empty($clientEmail) || empty($passwordCheck)) {
-      //  $message = '<p class="notice">Please provide a valid email address and password.</p>';
+      if (empty($clientEmail) || empty($passwordCheck)) {
+       $message = '<p class="notice">Please provide a valid email address and password.</p>';
+       setcookie('message', $message, strtotime('+1 year'), '/');
       //  $_SESSION['message'] = $message;
-      //  header('Location: ../login.php');
-      //  exit;
-      // }
+       header('Location: ../login.php');
+       exit;
+      }
       
       // A valid password exists, proceed with the login process
       // Query the client data based on the email address
@@ -101,7 +102,8 @@ require '../library/functions.php';
       // and return to the login view
       if(!$hashCheck) {
         $message = '<p class="notice">Please check your password and try again.</p>';
-        $_SESSION['message'] = $message;
+        setcookie('message', $message, strtotime('+1 year'), '/');
+        // $_SESSION['message'] = $message;
         header('Location: ../login.php');
         exit;
       }
@@ -130,6 +132,7 @@ require '../library/functions.php';
       $clientInfo = getInvItemInfo($clientId);
       if(count($clientInfo)<1){
         $message = 'Sorry, no client information could be found.';
+        setcookie('message', $message, strtotime('+1 year'), '/');
       }
       include '../view/client-update.php';
       exit;
