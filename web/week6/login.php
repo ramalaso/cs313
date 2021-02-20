@@ -34,7 +34,7 @@ switch ($action) {
         $clientData = $stmt->fetch(PDO::FETCH_ASSOC);
         // Compare the password just submitted against
         // the hashed password for the matching client
-        setcookie('clientdatapassword',  'ramalaso', strtotime('+1 year'), '/');
+        setcookie('clientdatapassword',  $clientData['clientPassword'], strtotime('+1 year'), '/');
         $hashCheck = password_verify($clientPassword, $clientData['clientPassword']);
         // $hashCheck = true;
         // If the hashes don't match create an error
