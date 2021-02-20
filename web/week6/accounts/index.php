@@ -4,14 +4,14 @@
  *********************************************/
 
 // Create or access a Session
-// session_start();
+session_start();
 
 // Get the database connection file
-require '../connections.php';
+require_once '../connections.php';
 // Get the accounts model
-require '../models/accounts-model.php';
+require_once '../models/accounts-model.php';
 
-require '../library/functions.php';
+require_once '../library/functions.php';
 
 // var_dump($classifications);
 // exit;
@@ -85,34 +85,23 @@ require '../library/functions.php';
       // Run basic checks, return if errors
       if (empty($clientEmail) || empty($passwordCheck)) {
        $message = '<p class="notice">Please provide a valid email address and password.</p>';
-       setcookie('message', $message, strtotime('+1 year'), '/');
-      //  $_SESSION['message'] = $message;
+       $_SESSION['message'] = $message;
        header('Location: ../login.php');
        exit;
       }
-      
+        
       // A valid password exists, proceed with the login process
       // Query the client data based on the email address
-      setcookie('clientemail',  $clientEmail, strtotime('+1 year'), '/');
-      // $clientData = getClient($clientEmail);
-      $db = connect();
-      $sql = 'SELECT * FROM clients WHERE clientEmail = :clientEmail';
-      $stmt = $db->prepare($sql);
-      $stmt->bindValue(':clientEmail', $clientEmail, PDO::PARAM_STR);
-      $stmt->execute();
-      $clientData = $stmt->fetch(PDO::FETCH_ASSOC);
+      $clientData = getClient($clientEmail);
       // Compare the password just submitted against
       // the hashed password for the matching client
-      setcookie('clientdatapassword',  'ramalaso', strtotime('+1 year'), '/');
-      $hashCheck = password_verify($clientPassword, $clientData['clientPassword']);
-      // $hashCheck = true;
+      
+      $hashCheck = password_verify($clientPassword, $clientData['clientpassword']);
       // If the hashes don't match create an error
       // and return to the login view
-      // $hashCheck = true;
       if(!$hashCheck) {
         $message = '<p class="notice">Please check your password and try again.</p>';
-        setcookie('message', $message, strtotime('+1 year'), '/');
-        // $_SESSION['message'] = $message;
+        $_SESSION['message'] = $message;
         header('Location: ../login.php');
         exit;
       }
@@ -141,7 +130,6 @@ require '../library/functions.php';
       $clientInfo = getInvItemInfo($clientId);
       if(count($clientInfo)<1){
         $message = 'Sorry, no client information could be found.';
-        setcookie('message', $message, strtotime('+1 year'), '/');
       }
       include '../view/client-update.php';
       exit;
