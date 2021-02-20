@@ -77,7 +77,7 @@ require '../library/functions.php';
 
         break;
     case 'login':
-      $clientEmail = filter_input(INPUT_POST, 'clientEmail');
+      $clientEmail = $_POST["clientEmail"]; 
       $clientEmail = checkEmail($clientEmail);
       $clientPassword = filter_input(INPUT_POST, 'clientPassword', FILTER_SANITIZE_STRING);
       $passwordCheck = checkPassword($clientPassword);
