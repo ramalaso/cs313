@@ -49,6 +49,7 @@ require_once '../library/functions.php';
           exit;
           }
 
+          
         // Check for missing data
         if (empty($clientFirstname) || empty($clientLastname) || empty($clientEmail) || empty($checkPassword)) {
           $_SESSION["message-failed"] = '<p>Please provide information for all empty form fields.</p>';
@@ -56,9 +57,9 @@ require_once '../library/functions.php';
           exit;
         }
         
+        $clientPassword = htmlspecialchars($clientPassword);
         // Hash the checked password
         $hashedPassword = password_hash($clientPassword, PASSWORD_DEFAULT);
-
 
         // Send the data to the model
         $regOutcome = regClient($clientFirstname, $clientLastname, $clientEmail, $hashedPassword);
@@ -74,7 +75,6 @@ require_once '../library/functions.php';
           header('Location: ../registration.php');
           exit;
         }
-
         break;
     case 'login':
       $clientEmail = filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_EMAIL);
