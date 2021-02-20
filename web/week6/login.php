@@ -35,7 +35,7 @@
                 <form id="form" class="form" action="./accounts/index.php" method="POST">
                     <h2>Login</h2>
                     <?php if (isset($_COOKIE['message'])) {
-               echo "<small>".$_COOKIE['message']."</small>";
+               echo "<small syle='color:red'>".$_COOKIE['message']."</small>";
             } ?>
                     <div class="form-control">
                         <label for="email">Email</label>
