@@ -4,7 +4,7 @@
  *********************************************/
 
 // Create or access a Session
-// session_start();
+session_start();
 
 // Get the database connection file
 require_once '../connections.php';
@@ -78,7 +78,7 @@ require_once '../library/functions.php';
         break;
     case 'login':
       $clientEmail = filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_EMAIL);
-      // $clientEmail = checkEmail($clientEmail);
+      $clientEmail = checkEmail($clientEmail);
       $clientPassword = filter_input(INPUT_POST, 'clientPassword', FILTER_SANITIZE_STRING);
       $passwordCheck = checkPassword($clientPassword);
       
@@ -98,13 +98,11 @@ require_once '../library/functions.php';
       
       $hashCheck = password_verify($clientPassword, $clientData['clientPassword']);
       // If the hashes don't match create an error
-      $hashCheck = true;
       // and return to the login view
       if(!$hashCheck) {
         $message = '<p class="notice">Please check your password and try again.</p>';
-        $_SESSION['error_message'] = $message;
+        $_SESSION['message'] = $message;
         header('Location: ../login.php');
-        die();
         exit;
       }
       // A valid user exists, log them in
