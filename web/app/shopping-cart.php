@@ -1,4 +1,5 @@
 <?php 
+
 session_start();
 $action = (isset($_GET['action'])) ? $_GET['action']: ""; //Ternary operator asking if there is an inputted action
 require_once ("Product.php");
