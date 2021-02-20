@@ -78,7 +78,10 @@ require_once '../library/functions.php';
         break;
     case 'login':
       $clientEmail = filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_EMAIL);
-      $clientEmail = checkEmail($clientEmail);
+      // $clientEmail = checkEmail($clientEmail);
+      echo '<script language="javascript">';
+      echo 'alert("Email".$clientEmail)';
+      echo '</script>';
       $clientPassword = filter_input(INPUT_POST, 'clientPassword', FILTER_SANITIZE_STRING);
       $passwordCheck = checkPassword($clientPassword);
       
