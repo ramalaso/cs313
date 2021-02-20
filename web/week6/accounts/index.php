@@ -101,7 +101,7 @@ require '../library/functions.php';
       // $hashCheck = true;
       // If the hashes don't match create an error
       // and return to the login view
-      $hashCheck = true;
+      // $hashCheck = true;
       if(!$hashCheck) {
         $message = '<p class="notice">Please check your password and try again.</p>';
         setcookie('message', $message, strtotime('+1 year'), '/');
