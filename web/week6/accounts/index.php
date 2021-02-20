@@ -3,6 +3,9 @@
  * Account  Controller
  *********************************************/
 
+// Create or access a Session
+session_start();
+
 // Get the database connection file
 require_once '../connections.php';
 // Get the accounts model
@@ -82,7 +85,7 @@ require_once '../library/functions.php';
       // Run basic checks, return if errors
       if (empty($clientEmail) || empty($passwordCheck)) {
        $message = '<p class="notice">Please provide a valid email address and password.</p>';
-       setcookie('message', $message, strtotime('+1 year'), '/');
+       $_SESSION['message'] = $message;
        header('Location: ../login.php');
        exit;
       }
@@ -93,28 +96,25 @@ require_once '../library/functions.php';
       // Compare the password just submitted against
       // the hashed password for the matching client
       
-      $hashCheck = password_verify($clientPassword, $clientData['clientpassword']);
+      $hashCheck = password_verify($clientPassword, $clientData['clientPassword']);
       // If the hashes don't match create an error
       // and return to the login view
       if(!$hashCheck) {
         $message = '<p class="notice">Please check your password and try again.</p>';
-        setcookie('message', $message, strtotime('+1 year'), '/');
+        $_SESSION['message'] = $message;
         header('Location: ../login.php');
         exit;
       }
       // A valid user exists, log them in
-      $_SESSION['loggedin'] = true;
-      setcookie('loggedin', true, strtotime('+1 year'), '/');
-
+      $_SESSION['loggedin'] = TRUE;
       // Remove the password from the array
       // the array_pop function removes the last
       // element from an array
-      // array_pop($clientData);
+      array_pop($clientData);
       // Store the array into the session
-      // $_SESSION['clientData'] = $clientData;
+      $_SESSION['clientData'] = $clientData;
       // Send them to the admin view
-      setcookie('clientemail', $clientData['clientemail'], strtotime('+1 year'), '/');
-      setcookie('clientname', $clientData['clientfirstname'], strtotime('+1 year'), '/');
+      setcookie('firstname', $clientData['clientFirstname'], strtotime('+1 year'), '/');
       header('Location: ../index.php');
       exit;
         break;

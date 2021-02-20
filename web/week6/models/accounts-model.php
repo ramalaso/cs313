@@ -44,7 +44,7 @@ function regClient($clientFirstname, $clientLastname, $clientEmail, $clientPassw
    // Get client data based on an email address
    function getClient($clientEmail){
     $db = connect();
-    $sql = 'SELECT clientid, clientfirstname, clientlastname, clientemail, clientlevel, clientpassword FROM clients WHERE clientemail = :clientEmail';
+    $sql = 'SELECT clientId, clientFirstname, clientLastname, clientEmail, clientLevel, clientPassword FROM clients WHERE clientEmail = :clientEmail';
     $stmt = $db->prepare($sql);
     $stmt->bindValue(':clientEmail', $clientEmail, PDO::PARAM_STR);
     $stmt->execute();
