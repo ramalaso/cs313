@@ -85,7 +85,7 @@ require_once '../library/functions.php';
       // Run basic checks, return if errors
       if (empty($clientEmail) || empty($passwordCheck)) {
        $message = '<p class="notice">Please provide a valid email address and password.</p>';
-       $_SESSION['message'] = $message;
+       $_COOKIE['message'] = $message;
        header('Location: ../login.php');
        exit;
       }
@@ -101,7 +101,7 @@ require_once '../library/functions.php';
       // and return to the login view
       if(!$hashCheck) {
         $message = '<p class="notice">Please check your password and try again.</p>';
-        $_SESSION['message'] = $message;
+        $_COOKIE['message'] = $message;
         header('Location: ../login.php');
         exit;
       }

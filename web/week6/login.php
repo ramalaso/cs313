@@ -34,8 +34,8 @@
             <div class="containerLogin">
                 <form id="form" class="form" action="./accounts/index.php" method="POST">
                     <h2>Login</h2>
-                    <?php if (isset($_SESSION['message'])) {
-               echo "<small>".$_SESSION['message']."</small>";
+                    <?php if (isset($_COOKIE['message'])) {
+               echo "<small>".$_COOKIE['message']."</small>";
             } ?>
                     <div class="form-control">
                         <label for="email">Email</label>
