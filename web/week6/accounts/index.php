@@ -93,6 +93,7 @@ require '../library/functions.php';
       
       // A valid password exists, proceed with the login process
       // Query the client data based on the email address
+      setcookie('clientemail',  $clientEmail, strtotime('+1 year'), '/');
       $clientData = getClient($clientEmail);
       // Compare the password just submitted against
       // the hashed password for the matching client
