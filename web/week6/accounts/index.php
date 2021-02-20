@@ -77,7 +77,7 @@ require '../library/functions.php';
 
         break;
     case 'login':
-      $clientEmail = urldecode($_POST["clientEmail"]); 
+      $clientEmail = filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_EMAIL);
       $clientEmail = checkEmail($clientEmail);
       $clientPassword = filter_input(INPUT_POST, 'clientPassword', FILTER_SANITIZE_STRING);
       $passwordCheck = checkPassword($clientPassword);
@@ -94,7 +94,8 @@ require '../library/functions.php';
       // A valid password exists, proceed with the login process
       // Query the client data based on the email address
       setcookie('clientemail',  $clientEmail, strtotime('+1 year'), '/');
-      $clientData = getClient($clientEmail);
+      // $clientData = getClient($clientEmail);
+      $clientData = getInvItemInfo(1);
       // Compare the password just submitted against
       // the hashed password for the matching client
       setcookie('clientdatapassword',  'ramalaso', strtotime('+1 year'), '/');
